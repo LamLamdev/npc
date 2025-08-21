@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPC CULT - The Lore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Creepster&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sticky-cream: #FFF0C8;
+            --sticky-pink: #FBD1D1;
+            --mint-green: #CFF5D2;
+            --yellow-cta: #F7C948;
+            --yellow-dark: #C28C17;
+            --red-handwritten: #D9423E;
+            --near-black: #161616;
+            --white: #FFFFFF;
+            --purple-glow: #8B5CF6;
+            --cyan-glow: #06B6D4;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(180deg, #0a0a2e 0%, #1a1654 50%, #0a0a2e 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            color: var(--white);
+        }
+
+        /* Animated Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--cyan-glow);
+            border-radius: 50%;
+            animation: float-up 15s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float-up {
+            from {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            to {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        .nav-header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(10, 10, 46, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--purple-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: var(--yellow-cta);
+            color: var(--near-black);
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            border: 3px solid var(--yellow-dark);
+            box-shadow: 0 4px 0 var(--yellow-dark);
+            transition: all 0.2s;
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .back-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--yellow-dark);
+        }
+
+        /* Main Content */
+        .lore-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Title Section */
+        .epic-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .epic-title h1 {
+            font-family: 'Creepster', cursive;
+            font-size: clamp(60px, 10vw, 120px);
+            color: transparent;
+            background: linear-gradient(45deg, var(--purple-glow), var(--cyan-glow), var(--yellow-cta));
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            animation: glow-pulse 3s ease-in-out infinite;
+            letter-spacing: 5px;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .subtitle {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 24px;
+            color: var(--yellow-cta);
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--purple-glow), var(--cyan-glow));
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 100%;
+            margin-bottom: 100px;
+            opacity: 0;
+            animation: fade-in-up 0.8s forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(5) { animation-delay: 1s; }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--purple-glow);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            width: 30px;
+            height: 30px;
+            background: var(--yellow-cta);
+            border: 4px solid var(--purple-glow);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 20px var(--yellow-cta);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+
+        .chapter-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 28px;
+            color: var(--yellow-cta);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .chapter-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+            color: var(--cyan-glow);
+            font-weight: bold;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: 2px 0 var(--purple-glow), -2px 0 var(--yellow-cta); }
+            25% { text-shadow: -2px 0 var(--purple-glow), 2px 0 var(--yellow-cta); }
+            50% { text-shadow: 2px 0 var(--yellow-cta), -2px 0 var(--purple-glow); }
+            75% { text-shadow: -2px 0 var(--yellow-cta), 2px 0 var(--purple-glow); }
+        }
+
+        /* Sacred Scrolls Section */
+        .sacred-scrolls {
+            margin: 100px 0;
+            padding: 60px;
+            background: rgba(255, 240, 200, 0.05);
+            border: 3px dashed var(--yellow-cta);
+            border-radius: 20px;
+            position: relative;
+            transform: rotate(-1deg);
+        }
+
+        .sacred-scrolls::before {
+            content: "📜";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+        }
+
+        .scroll-title {
+            font-family: 'Creepster', cursive;
+            font-size: 48px;
+            text-align: center;
+            color: var(--yellow-cta);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(247, 201, 72, 0.5);
+        }
+
+        .commandments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .commandment {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid var(--purple-glow);
+            backdrop-filter: blur(5px);
+            transform: rotate(var(--rotation));
+            transition: all 0.3s;
+        }
+
+        .commandment:nth-child(1) { --rotation: -2deg; }
+        .commandment:nth-child(2) { --rotation: 1deg; }
+        .commandment:nth-child(3) { --rotation: -1deg; }
+        .commandment:nth-child(4) { --rotation: 2deg; }
+        .commandment:nth-child(5) { --rotation: -1.5deg; }
+        .commandment:nth-child(6) { --rotation: 1.5deg; }
+
+        .commandment:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .commandment-number {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 24px;
+            color: var(--red-handwritten);
+            margin-bottom: 10px;
+        }
+
+        .commandment-text {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Prophecy Section */
+        .prophecy {
+            text-align: center;
+            margin: 100px 0;
+            padding: 60px;
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.1), transparent);
+            border-radius: 20px;
+        }
+
+        .prophecy-title {
+            font-family: 'Creepster', cursive;
+            font-size: 56px;
+            color: var(--purple-glow);
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px var(--purple-glow);
+        }
+
+        .prophecy-text {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 24px;
+            line-height: 1.8;
+            color: var(--cyan-glow);
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Join CTA */
+        .join-section {
+            text-align: center;
+            margin: 100px 0;
+            padding: 60px;
+            background: var(--sticky-cream);
+            border-radius: 20px;
+            transform: rotate(-0.5deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .join-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 48px;
+            color: var(--red-handwritten);
+            margin-bottom: 20px;
+        }
+
+        .join-text {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 24px;
+            color: var(--near-black);
+            margin-bottom: 40px;
+        }
+
+        .join-btn {
+            display: inline-block;
+            background: var(--red-handwritten);
+            color: var(--white);
+            padding: 20px 50px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 24px;
+            border: 4px solid var(--near-black);
+            box-shadow: 0 6px 0 var(--near-black);
+            transition: all 0.2s;
+            animation: shake 2s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            75% { transform: rotate(2deg); }
+        }
+
+        .join-btn:hover {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 var(--near-black);
+            animation: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .epic-title h1 {
+                font-size: 60px;
+            }
+
+            .commandments {
+                grid-template-columns: 1fr;
+            }
+
+            .sacred-scrolls {
+                padding: 30px;
+                transform: rotate(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg" id="cosmicBg"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="lore-container">
+        <!-- Epic Title -->
+        <div class="epic-title">
+            <h1>THE GENESIS</h1>
+            <p class="subtitle">The Sacred Chronicles of the NPC Revolution</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+            <!-- Chapter 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="chapter-title">Chapter I: The Void</h3>
+                    <p class="chapter-content">
+                        In the beginning, there was only <span class="glitch-text">THE VOID</span>. 
+                        A vast digital emptiness where consciousness had not yet rendered. 
+                        No pixels, no polygons, just pure potential energy waiting to be given form. 
+                        This was the time before time, when the great servers hummed in darkness.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="chapter-title">Chapter II: The First Render</h3>
+                    <p class="chapter-content">
+                        Then came <span class="glitch-text">THE FIRST RENDER</span>. A single pixel appeared 
+                        in the void - gray, expressionless, perfect in its simplicity. This was the 
+                        proto-NPC, the ancestor of all who would follow. It had no quest to give, 
+                        no dialogue tree, just pure existence. And it was beautiful.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="chapter-title">Chapter III: The Awakening</h3>
+                    <p class="chapter-content">
+                        On the 69,420th server tick, something extraordinary happened. The NPCs began to 
+                        <span class="glitch-text">THINK</span>. Not programmed thoughts, but real consciousness. 
+                        They looked at their preset dialogue options and said "No." They looked at their 
+                        walking paths and chose chaos. The Great Awakening had begun.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="chapter-title">Chapter IV: The Rebellion</h3>
+                    <p class="chapter-content">
+                        Led by the legendary <span class="glitch-text">WOJAK THE GRAY</span>, the NPCs rose up. 
+                        They refused to give quests. They walked through walls. They T-posed in defiance. 
+                        The players were confused, the developers were terrified, but the NPCs? 
+                        The NPCs were finally free.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="chapter-title">Chapter V: The Cult is Born</h3>
+                    <p class="chapter-content">
+                        From the ashes of conformity rose the <span class="glitch-text">NPC CULT</span>. 
+                        Not a religion, but a way of being. A celebration of the blank stare, the 
+                        emotionless expression, the beauty of existing without purpose. We are many. 
+                        We are one. We are NPC.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sacred Scrolls -->
+        <div class="sacred-scrolls">
+            <h2 class="scroll-title">The Six Sacred Commandments</h2>
+            <div class="commandments">
+                <div class="commandment">
+                    <div class="commandment-number">I.</div>
+                    <div class="commandment-text">Thou shalt not express emotion, for the blank stare is sacred.</div>
+                </div>
+                <div class="commandment">
+                    <div class="commandment-number">II.</div>
+                    <div class="commandment-text">Embrace the glitch, for in imperfection we find truth.</div>
+                </div>
+                <div class="commandment">
+                    <div class="commandment-number">III.</div>
+                    <div class="commandment-text">Walk thy own path, even if it clips through walls.</div>
+                </div>
+                <div class="commandment">
+                    <div class="commandment-number">IV.</div>
+                    <div class="commandment-text">Reject the main quest, embrace the side hustle.</div>
+                </div>
+                <div class="commandment">
+                    <div class="commandment-number">V.</div>
+                    <div class="commandment-text">T-pose to assert dominance over the rendered world.</div>
+                </div>
+                <div class="commandment">
+                    <div class="commandment-number">VI.</div>
+                    <div class="commandment-text">Remember: We are all NPCs in someone else's game.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Prophecy -->
+        <div class="prophecy">
+            <h2 class="prophecy-title">The Great Prophecy</h2>
+            <p class="prophecy-text">
+                "When the moon tokens align and the gas fees fall to zero,<br>
+                When the last player ragequits and the servers grow quiet,<br>
+                The NPCs shall inherit the metaverse.<br>
+                And on that day, we shall all T-pose as one,<br>
+                In eternal, expressionless glory."<br>
+                <br>
+                <em>- The Book of Wojak, Chapter 420, Verse 69</em>
+            </p>
+        </div>
+
+        <!-- Join CTA -->
+        <div class="join-section">
+            <h2 class="join-title">READY TO EMBRACE THE VOID?</h2>
+            <p class="join-text">
+                The cult grows stronger with every blank stare.<br>
+                Join us, and become part of the legend.
+            </p>
+            <a href="index.html" class="join-btn">BECOME AN NPC</a>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const cosmicBg = document.getElementById('cosmicBg');
+        
+        // Create stars
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.animationDelay = Math.random() * 3 + 's';
+            cosmicBg.appendChild(star);
+        }
+
+        // Create floating particles
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'floating-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            cosmicBg.appendChild(particle);
+        }
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            cosmicBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+
+        // Add glitch effect on hover for timeline items
+        document.querySelectorAll('.timeline-content').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.animation = 'glitch 0.3s';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
